@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="siixsem_scrap_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="calculateCostAcum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="calculateCostAcumComp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="checkCurWeek" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getCatDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getLevelProfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getModFailures" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getMPNCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MPN" Type="nvarchar" Mode="In" />
+          <Parameter Name="WEEK" Type="int" Mode="In" />
+          <Parameter Name="NUM_COMP" Type="int" Mode="In" />
+          <Parameter Name="YEAR" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getPQCReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateIni" Type="nvarchar" Mode="In" />
+          <Parameter Name="dateFin" Type="nvarchar" Mode="In" />
+          <Parameter Name="PRODUCT_PN" Type="nvarchar" Mode="In" />
+          <Parameter Name="DEFECT_CODE" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="getSectorLocations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="insert_item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="serial" Type="nvarchar" Mode="In" />
+          <Parameter Name="djGroup" Type="nvarchar" Mode="In" />
+          <Parameter Name="assembly" Type="nvarchar" Mode="In" />
+          <Parameter Name="assemDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="we" Type="nvarchar" Mode="In" />
+          <Parameter Name="bin" Type="nvarchar" Mode="In" />
+          <Parameter Name="cost" Type="float" Mode="In" />
+          <Parameter Name="user" Type="nvarchar" Mode="In" />
+          <Parameter Name="idDefect" Type="int" Mode="In" />
+          <Parameter Name="origin" Type="nvarchar" Mode="In" />
+          <Parameter Name="model" Type="nvarchar" Mode="In" />
+          <Parameter Name="loc" Type="nvarchar" Mode="In" />
+          <Parameter Name="pair_fg" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="insertCompTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="compName" Type="nvarchar" Mode="In" />
+          <Parameter Name="qty" Type="float" Mode="In" />
+          <Parameter Name="cost_unity" Type="float" Mode="In" />
+          <Parameter Name="cost_tot" Type="float" Mode="In" />
+          <Parameter Name="costAcum" Type="float" Mode="In" />
+        </Function>
+        <Function Name="insertItemTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ls" Type="int" Mode="In" />
+          <Parameter Name="assemName" Type="nvarchar" Mode="In" />
+          <Parameter Name="assemDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="wp" Type="nvarchar" Mode="In" />
+          <Parameter Name="cost" Type="float" Mode="In" />
+          <Parameter Name="costAcum" Type="float" Mode="In" />
+          <Parameter Name="numPCBS" Type="int" Mode="In" />
+        </Function>
+        <Function Name="reset_temp_comp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="reset_temp_or" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="takeLastWeek" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="updateAssemCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="assemName" Type="nvarchar" Mode="In" />
+          <Parameter Name="cost" Type="float" Mode="In" />
+        </Function>
+        <Function Name="updateCompCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="float" Mode="In" />
+          <Parameter Name="qty" Type="float" Mode="In" />
+        </Function>
+        <EntityContainer Name="siixsem_scrap_dbModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="siixsem_scrap_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="siixsem_scrap_dbEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="insert_item" ReturnType="Collection(siixsem_scrap_dbModel.insert_item_Result)">
+            <Parameter Name="serial" Mode="In" Type="String" />
+            <Parameter Name="djGroup" Mode="In" Type="String" />
+            <Parameter Name="assembly" Mode="In" Type="String" />
+            <Parameter Name="assemDesc" Mode="In" Type="String" />
+            <Parameter Name="we" Mode="In" Type="String" />
+            <Parameter Name="bin" Mode="In" Type="String" />
+            <Parameter Name="cost" Mode="In" Type="Double" />
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="idDefect" Mode="In" Type="Int32" />
+            <Parameter Name="origin" Mode="In" Type="String" />
+            <Parameter Name="model" Mode="In" Type="String" />
+            <Parameter Name="loc" Mode="In" Type="String" />
+            <Parameter Name="pair_fg" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insertItemTemp">
+            <Parameter Name="ls" Mode="In" Type="Int32" />
+            <Parameter Name="assemName" Mode="In" Type="String" />
+            <Parameter Name="assemDesc" Mode="In" Type="String" />
+            <Parameter Name="wp" Mode="In" Type="String" />
+            <Parameter Name="cost" Mode="In" Type="Double" />
+            <Parameter Name="costAcum" Mode="In" Type="Double" />
+            <Parameter Name="numPCBS" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="reset_temp_or" />
+          <FunctionImport Name="calculateCostAcum" ReturnType="Collection(siixsem_scrap_dbModel.calculateCostAcum_Result)" />
+          <FunctionImport Name="updateAssemCost" ReturnType="Collection(siixsem_scrap_dbModel.updateAssemCost_Result)">
+            <Parameter Name="assemName" Mode="In" Type="String" />
+            <Parameter Name="cost" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="getModFailures" ReturnType="Collection(siixsem_scrap_dbModel.getModFailures_Result)" />
+          <FunctionImport Name="calculateCostAcumComp" ReturnType="Collection(siixsem_scrap_dbModel.calculateCostAcumComp_Result)" />
+          <FunctionImport Name="insertCompTemp">
+            <Parameter Name="compName" Mode="In" Type="String" />
+            <Parameter Name="qty" Mode="In" Type="Double" />
+            <Parameter Name="cost_unity" Mode="In" Type="Double" />
+            <Parameter Name="cost_tot" Mode="In" Type="Double" />
+            <Parameter Name="costAcum" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="reset_temp_comp" />
+          <FunctionImport Name="updateCompCost" ReturnType="Collection(siixsem_scrap_dbModel.updateCompCost_Result)">
+            <Parameter Name="id" Mode="In" Type="Double" />
+            <Parameter Name="qty" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="getSectorLocations" ReturnType="Collection(siixsem_scrap_dbModel.getSectorLocations_Result)" />
+          <FunctionImport Name="getPQCReport" ReturnType="Collection(siixsem_scrap_dbModel.getPQCReport_Result)">
+            <Parameter Name="dateIni" Mode="In" Type="String" />
+            <Parameter Name="dateFin" Mode="In" Type="String" />
+            <Parameter Name="PRODUCT_PN" Mode="In" Type="String" />
+            <Parameter Name="DEFECT_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLevelProfile" ReturnType="Collection(siixsem_scrap_dbModel.getLevelProfile_Result)">
+          <Parameter Name="group_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="checkCurWeek" ReturnType="Collection(siixsem_scrap_dbModel.checkCurWeek_Result)" />
+          <FunctionImport Name="getMPNCost" ReturnType="Collection(siixsem_scrap_dbModel.getMPNCost_Result)">
+            <Parameter Name="MPN" Mode="In" Type="String" />
+            <Parameter Name="WEEK" Mode="In" Type="Int32" />
+            <Parameter Name="NUM_COMP" Mode="In" Type="Int32" />
+            <Parameter Name="YEAR" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="takeLastWeek" ReturnType="Collection(String)" />
+          <FunctionImport Name="getCatDetail" ReturnType="Collection(siixsem_scrap_dbModel.getCatDetail_Result)">
+          <Parameter Name="idCat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getCategories" ReturnType="Collection(siixsem_scrap_dbModel.getCategories_Result)" />
+        </EntityContainer>
+        <ComplexType Name="updateAssemCost_Result">
+          <Property Type="Int32" Name="RESULT" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="calculateCostAcum_Result">
+        <Property Type="Int32" Name="LINKAGE_SEQ" Nullable="true" />
+          <Property Type="Double" Name="COST" Nullable="true" />
+          <Property Type="Double" Name="COSTA_ACUM" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="insert_item_Result">
+          <Property Type="Int32" Name="RESULT" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getModFailures_Result">
+          <Property Type="Int32" Name="se_id" Nullable="false" />
+          <Property Type="String" Name="se_description" Nullable="false" MaxLength="350" />
+        </ComplexType>
+        <ComplexType Name="calculateCostAcumComp_Result">
+          <Property Type="Int32" Name="LINKAGE_SEQ" Nullable="true" />
+          <Property Type="Double" Name="COST" Nullable="true" />
+          <Property Type="Double" Name="COSTA_ACUM" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="updateCompCost_Result">
+          <Property Type="Int32" Name="RESULT" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getSectorLocations_Result">
+          <Property Type="Int32" Name="se_id_sector" Nullable="false" />
+          <Property Type="String" Name="se_description" Nullable="false" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="getPQCReport_Result">
+          <Property Type="String" Name="PRODUCT_PN" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="PRODUCT_ID" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="EVENT_DATE" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="EVENT_TMST" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="DEFECT_CODE" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="USER_ID" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="SESION" Nullable="true" MaxLength="70" />
+        </ComplexType>
+        <ComplexType Name="getLevelProfile_Result">
+          <Property Type="Int32" Name="LEVEL" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getMPNCost_Result">
+          <Property Type="String" Name="MPN" Nullable="false" MaxLength="150" />
+          <Property Type="Double" Name="UNIT_PRICE" Nullable="false" />
+          <Property Type="Double" Name="TOTAL" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="checkCurWeek_Result">
+          <Property Type="Int32" Name="RESULT" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getCatDetail_Result">
+          <Property Type="String" Name="CATEGORY" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="TYPE" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getCategories_Result">
+          <Property Type="Int32" Name="se_id" Nullable="false" />
+          <Property Type="String" Name="se_description" Nullable="false" MaxLength="150" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="siixsem_scrap_dbModelStoreContainer" CdmEntityContainer="siixsem_scrap_dbEntities" >
+          <FunctionImportMapping FunctionImportName="insert_item" FunctionName="siixsem_scrap_dbModel.Store.insert_item" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.insert_item_Result">
+                <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insertItemTemp" FunctionName="siixsem_scrap_dbModel.Store.insertItemTemp" />
+          <FunctionImportMapping FunctionImportName="reset_temp_or" FunctionName="siixsem_scrap_dbModel.Store.reset_temp_or" />
+          <FunctionImportMapping FunctionImportName="calculateCostAcum" FunctionName="siixsem_scrap_dbModel.Store.calculateCostAcum" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.calculateCostAcum_Result">
+              <ScalarProperty Name="LINKAGE_SEQ" ColumnName="LINKAGE_SEQ" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+                <ScalarProperty Name="COSTA_ACUM" ColumnName="COSTA_ACUM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="updateAssemCost" FunctionName="siixsem_scrap_dbModel.Store.updateAssemCost" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.updateAssemCost_Result">
+                <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getModFailures" FunctionName="siixsem_scrap_dbModel.Store.getModFailures">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.getModFailures_Result">
+                <ScalarProperty Name="se_id" ColumnName="se_id" />
+                <ScalarProperty Name="se_description" ColumnName="se_description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="calculateCostAcumComp" FunctionName="siixsem_scrap_dbModel.Store.calculateCostAcumComp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.calculateCostAcumComp_Result">
+                <ScalarProperty Name="LINKAGE_SEQ" ColumnName="LINKAGE_SEQ" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+                <ScalarProperty Name="COSTA_ACUM" ColumnName="COSTA_ACUM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insertCompTemp" FunctionName="siixsem_scrap_dbModel.Store.insertCompTemp" />
+          <FunctionImportMapping FunctionImportName="reset_temp_comp" FunctionName="siixsem_scrap_dbModel.Store.reset_temp_comp" />
+          <FunctionImportMapping FunctionImportName="updateCompCost" FunctionName="siixsem_scrap_dbModel.Store.updateCompCost" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.updateCompCost_Result">
+                <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getSectorLocations" FunctionName="siixsem_scrap_dbModel.Store.getSectorLocations">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.getSectorLocations_Result">
+                <ScalarProperty Name="se_id_sector" ColumnName="se_id_sector" />
+                <ScalarProperty Name="se_description" ColumnName="se_description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getPQCReport" FunctionName="siixsem_scrap_dbModel.Store.getPQCReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.getPQCReport_Result">
+                <ScalarProperty Name="PRODUCT_PN" ColumnName="PRODUCT_PN" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="EVENT_DATE" ColumnName="EVENT_DATE" />
+                <ScalarProperty Name="EVENT_TMST" ColumnName="EVENT_TMST" />
+                <ScalarProperty Name="DEFECT_CODE" ColumnName="DEFECT_CODE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="SESION" ColumnName="SESION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLevelProfile" FunctionName="siixsem_scrap_dbModel.Store.getLevelProfile" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.getLevelProfile_Result">
+                <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="checkCurWeek" FunctionName="siixsem_scrap_dbModel.Store.checkCurWeek" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.checkCurWeek_Result">
+                <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getMPNCost" FunctionName="siixsem_scrap_dbModel.Store.getMPNCost">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.getMPNCost_Result">
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="UNIT_PRICE" ColumnName="UNIT_PRICE" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="takeLastWeek" FunctionName="siixsem_scrap_dbModel.Store.takeLastWeek" />
+          <FunctionImportMapping FunctionImportName="getCatDetail" FunctionName="siixsem_scrap_dbModel.Store.getCatDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.getCatDetail_Result">
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getCategories" FunctionName="siixsem_scrap_dbModel.Store.getCategories">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="siixsem_scrap_dbModel.getCategories_Result">
+                <ScalarProperty Name="se_id" ColumnName="se_id" />
+                <ScalarProperty Name="se_description" ColumnName="se_description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

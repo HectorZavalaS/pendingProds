@@ -1,0 +1,133 @@
+﻿
+@*@if (Request.IsAuthenticated)
+{*@
+    <div class="row">
+        <div class="window" style="margin-top:70px;">
+            <div class="window-content" style="margin-top:20px;background-color:lightgray;padding:20px;">
+                <div class="form-inline titleBox window" style="width: 100%;margin-left: auto;margin-right: auto; padding:10px; position:relative;">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" class="form-control" id="datePIni">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" class="form-control" id="datePFin">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Model: </label>
+                            <select class="form-control" id="models" style="width:300px;">
+                                <option>Select...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Defects: </label>
+                            <select class="form-control" id="defectsCgs" style="max-width:300px;">
+                                <option>Select...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <button id="btnSearch" type="button" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+
+                <br /><br />
+                <div id="infModel" style="display:none;">
+                    <br />
+                    <div class="titleBox window" style="margin-left: 10px;">
+                        <div class="window-content" style="padding:0px;background-image:none;background-color:white;"><label style="margin-bottom:0px;">Defect Results</label></div>
+                    </div>
+                    <div id="getTableOr" class="window-content" style="padding-top:20px;"></div>
+                    <br />
+                    @*<input type="hidden" id="countAssem" value="0" />
+                    <button id="btnSave" type="button" class="btn btn-success">Save</button>*@
+                </div>
+                <div style="clear:both;"></div>
+                <br />
+            </div>
+        </div>
+    </div>
+    @section scripts{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                getModels();
+                getDefectsCGS();
+                let date = new Date()
+                const zeroPad = (num, places) => String(num).padStart(places, '0')
+
+                let day = date.getDate()
+                let month = date.getMonth() + 1
+                let year = date.getFullYear()
+
+
+                $("#datePIni").val(zeroPad(month, 2) + '/' + zeroPad(day, 2) + '/' + year);
+                $("#datePFin").val(zeroPad(month, 2) + '/' + zeroPad(day, 2) + '/' + year);
+                $('.datepicker').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
+
+                $("#btnSearch").click(function () {
+                    //alert($("#models").val() + " " + $("#defectsCgs").val());
+                    if ($("#dateP").val() == "") {
+                        alertW("<div class='window-content' style='color:orange;font-weight:bold;'>Debes seleccionar una fecha.</div>");
+                    }
+                    else {
+                        getPQCReport();
+                    }
+                    //alert($("#dateP").val());
+                });
+                $("#btnSave").click(function () {
+
+                    if ($("#inpuOD").val() == "") {
+                        alertW("<div class='window-content' style='color:orange;font-weight:bold;'>Debes escribir donde se detecto el defecto.</div>");
+                        $("#inpuOD").focus();
+                        return;
+                    }
+
+                    var radioValue = $("input[name='radio_sub']:checked").val();
+                    $("#userKey").val(@User.Identity.Name);
+                    if (radioValue) {
+                        //alert($("#assemName_" + radioValue).text());
+                        //return;
+                        //alert($("#serial").val() + ", " + $("#djGroup").val() + ", " + $("#input_" + radioValue).val() + ", " + $("#assemDesc_" + radioValue).text() + ", " + $("#wipEnt_" + radioValue).text() + ", " + $("#mainCostA_" + radioValue).text());
+                        inset_item(radioValue);
+                    }
+                    else {
+                        alertW("<div class='window-content' style='color:orange;font-weight:bold;'>Debes seleccionar un subensamble.</div>");
+                    }
+                });
+            });
+        </script>
+    }
+@*}
+else
+{
+    <div class="alert alert-warning warningBar" role="alert" style="margin-top:90px;margin-left:auto;margin-right:auto;width:45%;">
+        Debes iniciar sesión para usar el sistema...
+        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#dlgGeneral" id="btnLogin" style="margin-left:30px;">
+            Iniciar sesion...
+        </button>
+    </div>
+    @section scripts{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#btnLogin").click(function () {
+                    getDlgLogin();
+                });
+            });
+        </script>
+    }
+
+}*@
+
+
+
